@@ -1,10 +1,24 @@
-// index.js
-const Koa = require("koa"); // 👈 1
-const app = new Koa(); // 👈 1
 
-app.use(async (ctx) => {
-  // 👇 3
-  ctx.body = "Hello World";
-});
 
-app.listen(9000); // 👈 2
+
+// const { createServer } = require("./createServer");
+
+// const main = async () => {
+//   try {
+//     const server = await createServer();
+//     await server.start();
+
+//     const onClose = async () => {
+//       await server.stop();
+//       process.exit(0);
+//     };
+//     process.on("SIGINT", onClose);
+//     process.on("SIGTERM", onClose);
+//     process.on("SIGQUIT", onClose);
+//   } catch (error) {
+//     console.error(error);
+//     process.exit(-1);
+//   }
+// };
+
+// main();
