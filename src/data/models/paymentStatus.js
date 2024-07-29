@@ -1,15 +1,15 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class OrderPackaging extends Model {
+  class PaymentStatus extends Model {
     static associate({ Order }) {
       this.hasMany(Order, {
-        foreignKey: "orderPackagingName",
+        foreignKey: "paymentStatusName",
         as: "orders",
       });
     }
   }
-  OrderPackaging.init(
+  PaymentStatus.init(
     {
       referenceId: {
         type: DataTypes.STRING,
@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "OrderPackaging",
-      tableName: "order_packagings",
+      modelName: "PaymentStatus",
+      tableName: "payment_statuses",
       underscored: true,
     }
   );
-  return OrderPackaging;
+  return PaymentStatus;
 };
