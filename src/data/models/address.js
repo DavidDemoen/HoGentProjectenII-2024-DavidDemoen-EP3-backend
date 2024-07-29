@@ -1,29 +1,26 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Account extends Model {
-    static associate({ Company, AccountType, Address, Order }) {
-      this.belongsTo(Company, {
-        foreignKey: "companyId",
-      });
-      this.belongsTo(AccountType, {
-        foreignKey: "accountTypeName",
-      });
-      this.belongsTo(Address, {
+  class Address extends Model {
+    static associate({ Company, Account, Order, Manufacturer }) {
+      this.hasMany(Company, {
         foreignKey: "addressId",
-        as: "accountAddress",
+      });
+      this.hasMany(Account, {
+        foreignKey: "addressId",
       });
       this.hasMany(Order, {
-        foreignKey: "sellerAccountId",
-        as: "seller_orders",
+        foreignKey: "shippingAddressId",
       });
       this.hasMany(Order, {
-        foreignKey: "buyerAccountId",
-        as: "buyer_orders",
+        foreignKey: "billingAddressId",
+      });
+      this.hasMany(Manufacturer, {
+        foreignKey: "manufacturerAddressId",
       });
     }
   }
-  Account.init(
+  Address.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -31,41 +28,33 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
-      first_name: {
+      street: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      last_name: {
+      number: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      phone: {
+      city: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isEmail: true,
-        },
-      },
-      password: {
+      postalCode: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      is_active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
+      country: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Account",
-      tableName: "accounts",
+      modelName: "Address",
+      tableName: "addresses",
       underscored: true,
     }
   );
-
-  return Account;
+  return Address;
 };

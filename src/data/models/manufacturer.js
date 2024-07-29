@@ -1,18 +1,18 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Company extends Model {
-    static associate({ Account, Address }) {
-      this.hasMany(Account, {
-        foreignKey: "companyId",
+  class Manufacturer extends Model {
+    static associate({ Address, Product }) {
+      this.hasMany(Product, {
+        foreignKey: "manufacturerId",
       });
+
       this.belongsTo(Address, {
-        foreignKey: "addressId",
+        foreignKey: "manufacturerAddressId",
       });
     }
   }
-
-  Company.init(
+  Manufacturer.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -37,13 +37,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      logo: {
-        type: DataTypes.STRING,
-      },
-      is_active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      },
       vat: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -52,11 +45,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Company",
-      tableName: "companies",
+      modelName: "Manufacturer",
+      tableName: "manufacturers",
       underscored: true,
     }
   );
-
-  return Company;
+  return Manufacturer;
 };
