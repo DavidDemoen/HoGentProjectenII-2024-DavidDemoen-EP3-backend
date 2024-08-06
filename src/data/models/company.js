@@ -2,12 +2,17 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
-    static associate({ Account, Address }) {
+    static associate({ Account, Address, Product }) {
       this.hasMany(Account, {
         foreignKey: "companyId",
+        as: "accounts",
       });
       this.belongsTo(Address, {
         foreignKey: "addressId",
+      });
+
+      this.belongsToMany(Product, {
+        through: "company_product",
       });
     }
   }
@@ -43,6 +48,10 @@ module.exports = (sequelize, DataTypes) => {
       is_active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      has_shop: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       vat: {
         type: DataTypes.STRING,

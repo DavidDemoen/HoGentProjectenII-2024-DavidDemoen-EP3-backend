@@ -200,6 +200,7 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "SUPPLIER",
+    addressId: 1,
   },
   {
     id: 21,
@@ -210,6 +211,7 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "ADMIN",
+    addressId: 1,
   },
   {
     id: 22,
@@ -220,6 +222,7 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "PURCHASER",
+    addressId: 1,
   },
   {
     id: 23,
@@ -230,6 +233,7 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "WAREHOUSE",
+    addressId: 1,
   },
 ];
 

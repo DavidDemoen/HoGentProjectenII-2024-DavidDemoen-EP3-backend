@@ -5,7 +5,7 @@ const orders = [
     id: 1,
     referenceId: "B2B-ORDER-0001",
     date: new Date(),
-    orderDiscount: 0.0,
+    orderDiscount: 0.2,
     sellerAccountId: 20,
     buyerAccountId: 12,
     shippingAddressId: 1,
@@ -130,7 +130,7 @@ const orders = [
   {
     id: 10,
     referenceId: "B2B-ORDER-0010",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 1)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -144,7 +144,7 @@ const orders = [
   {
     id: 11,
     referenceId: "B2B-ORDER-0011",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 1)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -158,7 +158,7 @@ const orders = [
   {
     id: 12,
     referenceId: "B2B-ORDER-0012",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 2)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -172,7 +172,7 @@ const orders = [
   {
     id: 13,
     referenceId: "B2B-ORDER-0013",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 2)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -186,7 +186,7 @@ const orders = [
   {
     id: 14,
     referenceId: "B2B-ORDER-0014",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 3)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -200,7 +200,7 @@ const orders = [
   {
     id: 15,
     referenceId: "B2B-ORDER-0015",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 3)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -214,7 +214,7 @@ const orders = [
   {
     id: 16,
     referenceId: "B2B-ORDER-0016",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 5)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -228,7 +228,7 @@ const orders = [
   {
     id: 17,
     referenceId: "B2B-ORDER-0017",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 5)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -242,8 +242,8 @@ const orders = [
   {
     id: 18,
     referenceId: "B2B-ORDER-0018",
-    date: new Date(),
-    orderDiscount: 0.0,
+    date: new Date(new Date().setDate(new Date().getDate() - 5)),
+    orderDiscount: 0.2,
     sellerAccountId: 20,
     buyerAccountId: 12,
     shippingAddressId: 1,
@@ -256,7 +256,7 @@ const orders = [
   {
     id: 19,
     referenceId: "B2B-ORDER-0019",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 20)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,
@@ -270,7 +270,7 @@ const orders = [
   {
     id: 20,
     referenceId: "B2B-ORDER-0020",
-    date: new Date(),
+    date: new Date(new Date().setDate(new Date().getDate() - 20)),
     orderDiscount: 0.0,
     sellerAccountId: 20,
     buyerAccountId: 12,

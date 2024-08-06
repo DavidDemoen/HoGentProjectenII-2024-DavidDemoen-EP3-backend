@@ -99,6 +99,7 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000010",
+    has_shop: true,
     addressId: "5",
   },
   {
@@ -109,6 +110,7 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000011",
+    has_shop: true,
     addressId: 6,
   },
   {
@@ -119,6 +121,7 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000012",
+    has_shop: true,
     addressId: 3,
   },
   {
@@ -129,6 +132,7 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000013",
+    has_shop: true,
     addressId: 4,
   },
 ];
