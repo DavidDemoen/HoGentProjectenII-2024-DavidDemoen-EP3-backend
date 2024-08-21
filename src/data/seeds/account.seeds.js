@@ -1,4 +1,6 @@
 const { Account } = require("../models");
+const gender = require("../models/gender");
+const { hashPassword } = require("../../core/password");
 
 const accounts = [
   {
@@ -11,16 +13,7 @@ const accounts = [
     companyId: 1,
     accountTypeName: "DELAWARE",
   },
-  {
-    id: 2,
-    first_name: "Jane",
-    last_name: "Smith",
-    phone: "+32456123457",
-    email: "jane.smith@b2b.io",
-    password: "password",
-    companyId: 2,
-    accountTypeName: "SUPPLIER",
-  },
+
   {
     id: 3,
     first_name: "Alice",
@@ -30,6 +23,7 @@ const accounts = [
     password: "password",
     companyId: 3,
     accountTypeName: "WAREHOUSE",
+    genderId: 2,
   },
   {
     id: 4,
@@ -40,16 +34,7 @@ const accounts = [
     password: "password",
     companyId: 4,
     accountTypeName: "PURCHASER",
-  },
-  {
-    id: 5,
-    first_name: "Charlie",
-    last_name: "Davis",
-    phone: "+32456123460",
-    email: "charlie.davis@b2b.io",
-    password: "password",
-    companyId: 5,
-    accountTypeName: "CLIENT",
+    genderId: 1,
   },
   {
     id: 6,
@@ -60,6 +45,7 @@ const accounts = [
     password: "password",
     companyId: 1,
     accountTypeName: "WAREHOUSE",
+    genderId: 1,
   },
   {
     id: 7,
@@ -70,16 +56,7 @@ const accounts = [
     password: "password",
     companyId: 2,
     accountTypeName: "PURCHASER",
-  },
-  {
-    id: 8,
-    first_name: "Frank",
-    last_name: "Garcia",
-    phone: "+32456123463",
-    email: "frank.garcia@b2b.io",
-    password: "password",
-    companyId: 8,
-    accountTypeName: "CLIENT",
+    genderId: 3,
   },
   {
     id: 9,
@@ -90,17 +67,9 @@ const accounts = [
     password: "password",
     companyId: 4,
     accountTypeName: "ADMIN",
+    genderId: 2,
   },
-  {
-    id: 10,
-    first_name: "Henry",
-    last_name: "Lopez",
-    phone: "+32456123465",
-    email: "hogent@b2b.io",
-    password: "password",
-    companyId: 11,
-    accountTypeName: "SUPPLIER",
-  },
+
   {
     id: 11,
     first_name: "Jan",
@@ -110,6 +79,7 @@ const accounts = [
     password: "password",
     companyId: 11,
     accountTypeName: "ADMIN",
+    genderId: 4,
   },
   {
     id: 12,
@@ -120,6 +90,7 @@ const accounts = [
     password: "password",
     companyId: 11,
     accountTypeName: "PURCHASER",
+    genderId: 2,
   },
   {
     id: 13,
@@ -130,6 +101,7 @@ const accounts = [
     password: "password",
     companyId: 11,
     accountTypeName: "PURCHASER",
+    genderId: 1,
   },
   {
     id: 14,
@@ -140,17 +112,9 @@ const accounts = [
     password: "password",
     companyId: 11,
     accountTypeName: "WAREHOUSE",
+    genderId: 1,
   },
-  {
-    id: 15,
-    first_name: "Bureau",
-    last_name: "Supplies",
-    phone: "+32456123470",
-    email: "bureau_supplies@b2b.io",
-    password: "password",
-    companyId: 12,
-    accountTypeName: "SUPPLIER",
-  },
+
   {
     id: 16,
     first_name: "Irina",
@@ -160,6 +124,7 @@ const accounts = [
     password: "password",
     companyId: 12,
     accountTypeName: "ADMIN",
+    genderId: 4,
   },
   {
     id: 17,
@@ -170,6 +135,7 @@ const accounts = [
     password: "password",
     companyId: 12,
     accountTypeName: "PURCHASER",
+    genderId: 2,
   },
   {
     id: 18,
@@ -180,6 +146,7 @@ const accounts = [
     password: "password",
     companyId: 12,
     accountTypeName: "WAREHOUSE",
+    genderId: 1,
   },
   {
     id: 19,
@@ -190,17 +157,9 @@ const accounts = [
     password: "password",
     companyId: 12,
     accountTypeName: "WAREHOUSE",
+    genderId: 1,
   },
-  {
-    id: 20,
-    first_name: "David",
-    last_name: "Demoen",
-    phone: "+32456123475",
-    email: "harmonic_rift@b2b.io",
-    password: "password",
-    companyId: 13,
-    accountTypeName: "SUPPLIER",
-  },
+
   {
     id: 21,
     first_name: "David",
@@ -210,6 +169,8 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "ADMIN",
+    addressId: 1,
+    genderId: 4,
   },
   {
     id: 22,
@@ -220,6 +181,8 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "PURCHASER",
+    addressId: 1,
+    genderId: 2,
   },
   {
     id: 23,
@@ -230,10 +193,16 @@ const accounts = [
     password: "password",
     companyId: 13,
     accountTypeName: "WAREHOUSE",
+    addressId: 1,
+    genderId: 1,
   },
 ];
 
-const seedAccounts = () => {
+const seedAccounts = async () => {
+  for (const account of accounts) {
+    account.password = await hashPassword(account.password);
+  }
+
   return Account.bulkCreate(accounts);
 };
 

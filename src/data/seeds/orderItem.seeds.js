@@ -2,8 +2,8 @@ const { OrderItem } = require("../models");
 
 const orderItems = [
     // Order 1
-    { id: 1, quantity: 2, transactionUnitPrice: 15.50, transactionDiscount: 0.0, orderId: 1, productId: 45 },
-    { id: 2, quantity: 1, transactionUnitPrice: 20.00, transactionDiscount: 0.0, orderId: 1, productId: 78 },
+    { id: 1, quantity: 2, transactionUnitPrice: 15.50, transactionDiscount: 0.3, orderId: 1, productId: 45 },
+    { id: 2, quantity: 1, transactionUnitPrice: 20.00, transactionDiscount: 0.4, orderId: 1, productId: 78 },
   
     // Order 2
     { id: 3, quantity: 3, transactionUnitPrice: 10.00, transactionDiscount: 0.0, orderId: 2, productId: 33 },

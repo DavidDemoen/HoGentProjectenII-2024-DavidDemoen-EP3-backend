@@ -1,3 +1,4 @@
+const { has } = require("config");
 const { Company } = require("../models");
 
 const companies = [
@@ -10,6 +11,8 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000001",
     addressId: "1",
+    has_shop: true,
+    tagline: "The most innovative tech around!",
   },
   {
     id: "2",
@@ -20,6 +23,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000002",
     addressId: "2",
+    tagline: "The best health solutions for you!",
   },
   {
     id: "3",
@@ -30,6 +34,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000003",
     addressId: "3",
+    tagline: "Saving the planet one step at a time!",
   },
   {
     id: "4",
@@ -40,6 +45,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000004",
     addressId: "4",
+    tagline: "Your financial future is safe with us!",
   },
   {
     id: "5",
@@ -50,6 +56,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000005",
     addressId: "5",
+    tagline: "The best travel deals around!",
   },
   {
     id: "6",
@@ -60,6 +67,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000006",
     addressId: "1",
+    tagline: "The best food in town is here!",
   },
   {
     id: "7",
@@ -70,6 +78,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000007",
     addressId: "2",
+    tagline: "Education is the key to success!",
   },
   {
     id: "8",
@@ -80,6 +89,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000008",
     addressId: "3",
+    tagline: "The latest fashion trends are here!",
   },
   {
     id: "9",
@@ -90,6 +100,7 @@ const companies = [
     updated_at: new Date(),
     vat: "BE000000000009",
     addressId: "4",
+    tagline: "The best home comforts are here!",
   },
   {
     id: "10",
@@ -99,7 +110,9 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000010",
+    has_shop: true,
     addressId: "5",
+    tagline: "The best auto experts are here!",
   },
   {
     id: 11,
@@ -109,7 +122,9 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000011",
+    has_shop: true,
     addressId: 6,
+    tagline: "The best university in town!",
   },
   {
     id: 12,
@@ -119,7 +134,9 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000012",
+    has_shop: true,
     addressId: 3,
+    tagline: "The best supplies for your office!",
   },
   {
     id: 13,
@@ -129,7 +146,9 @@ const companies = [
     created_at: new Date(),
     updated_at: new Date(),
     vat: "BE000000000013",
+    has_shop: true,
     addressId: 4,
+    tagline: "The most exciting Synth Supplier around!",
   },
 ];
 

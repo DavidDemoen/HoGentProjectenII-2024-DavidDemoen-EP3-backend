@@ -2,8 +2,16 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
-    static associate({ Account, Address }) {
+    static associate({ Account, Address, CompanyProduct, Product, Order }) {
       this.hasMany(Account, {
+        foreignKey: "companyId",
+        as: "accounts",
+      });
+      this.hasMany(Order, {
+        foreignKey: "sellerCompanyId",
+      });
+      this.belongsToMany(Product, {
+        through: CompanyProduct,
         foreignKey: "companyId",
       });
       this.belongsTo(Address, {
@@ -44,10 +52,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
+      has_shop: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       vat: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      tagline: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
