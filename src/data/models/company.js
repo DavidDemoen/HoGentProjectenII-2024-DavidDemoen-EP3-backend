@@ -2,17 +2,20 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
-    static associate({ Account, Address, Product }) {
+    static associate({ Account, Address, CompanyProduct, Product, Order }) {
       this.hasMany(Account, {
         foreignKey: "companyId",
         as: "accounts",
       });
+      this.hasMany(Order, {
+        foreignKey: "sellerCompanyId",
+      });
+      this.belongsToMany(Product, {
+        through: CompanyProduct,
+        foreignKey: "companyId",
+      });
       this.belongsTo(Address, {
         foreignKey: "addressId",
-      });
-
-      this.belongsToMany(Product, {
-        through: "company_product",
       });
     }
   }
@@ -57,6 +60,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      tagline: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {

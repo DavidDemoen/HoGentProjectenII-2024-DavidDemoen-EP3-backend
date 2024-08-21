@@ -1,25 +1,23 @@
 const { Manufacturer } = require("../data/models");
+const ServiceError = require("../core/serviceError");
+const handleDBError = require("./_handleDBError");
 
 const getAll = async () => {
-  try {
-    const manufacturers = await Manufacturer.findAll();
-    if (manufacturers.length === 0) {
-      return { message: "No manufacturers found" };
-    }
-    return { manufacturers, count: manufacturers.length };
-  } catch (error) {
-    console.error(error);
-  }
+  const manufacturers = await Manufacturer.findAll();
+
+  return { manufacturers, count: manufacturers.length };
 };
 const getById = async (id) => {
   try {
     const manufacturer = await Manufacturer.findByPk(id);
     if (!manufacturer) {
-      return { message: "Manufacturer not found" };
+      throw ServiceError.notFound(`Manufacturer with id ${id} not found`, {
+        id,
+      });
     }
     return { manufacturer };
   } catch (error) {
-    console.error(error);
+    throw handleDBError(error);
   }
 };
 

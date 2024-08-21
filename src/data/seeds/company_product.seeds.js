@@ -1,29 +1,31 @@
-const { Company } = require("../models");
+const { CompanyProduct } = require("../models");
 
 const companyProducts = [];
 
 const populateCompanyProducts = async () => {
   for (let i = 1; i <= 100; i++) {
     companyProducts.push({
-      company_id: 13,
-      product_id: i,
+      companyId: 13,
+      productId: i,
       created_at: new Date(),
       updated_at: new Date(),
+      stock: Math.floor(Math.random() * 100),
     });
   }
-  companyProducts.push({
-    company_id: 1,
-    product_id: 1,
-    created_at: new Date(),
-    updated_at: new Date(),
-  });
+  for (let i = 1; i <= 10; i++) {
+    companyProducts.push({
+      companyId: 1,
+      productId: i,
+      created_at: new Date(),
+      updated_at: new Date(),
+      stock: Math.floor(Math.random() * 100),
+    });
+  }
 };
 
 const seedCompanyProducts = () => {
   populateCompanyProducts();
-  Company.sequelize
-    .getQueryInterface()
-    .bulkInsert("company_product", companyProducts);
+  return CompanyProduct.bulkCreate(companyProducts);
 };
 
 module.exports = { seedCompanyProducts };

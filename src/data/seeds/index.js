@@ -12,6 +12,7 @@ const { seedManufacturers } = require("./manufacturer.seeds");
 const { seedProducts } = require("./product.seeds");
 const { seedOrderItems } = require("./orderItem.seeds");
 const { seedCompanyProducts } = require("./company_product.seeds");
+const { seedGenders } = require("./gender.seeds");
 
 const seedAll = async () => {
   try {
@@ -21,6 +22,7 @@ const seedAll = async () => {
     await seedPaymentMethods();
     await seedAccountTypes();
     await seedOrderStatuses();
+    await seedGenders();
     await seedAddresses();
     await seedCompanies();
     await seedAccounts();

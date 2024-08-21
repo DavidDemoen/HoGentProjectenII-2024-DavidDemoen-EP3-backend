@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       PaymentStatus,
       PaymentMethod,
       OrderPackaging,
+      Company,
     }) {
-      this.belongsTo(Account, {
-        foreignKey: "sellerAccountId",
-        as: "seller_account",
+      this.belongsTo(Company, {
+        foreignKey: "sellerCompanyId",
       });
       this.belongsTo(Account, {
         foreignKey: "buyerAccountId",
@@ -62,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
       referenceId: {
         type: DataTypes.STRING,
         allowNull: false,
+        //unique: true,
       },
       date: {
         type: DataTypes.DATE,

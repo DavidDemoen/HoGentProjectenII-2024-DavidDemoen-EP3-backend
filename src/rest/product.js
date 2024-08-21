@@ -3,10 +3,39 @@ const productService = require("../service/product");
 
 // GET /products
 const getAllProducts = async (ctx) => {
-  ctx.body = await productService.getAll();
+  const {
+    companyId,
+    search,
+    manufacturerId,
+    productCategoryId,
+    page = 1,
+    limit = 10,
+    sortBy = "name",
+    sortOrder = "ASC",
+  } = ctx.query;
+
+  const productCategoryIds = productCategoryId
+    ? productCategoryId.split(",").map((id) => id.trim())
+    : null;
+  const manufacturerIds = manufacturerId
+    ? manufacturerId.split(",").map((id) => id.trim())
+    : null;
+
+  const filters = {
+    companyId,
+    search,
+    manufacturerIds,
+    productCategoryIds,
+    page: parseInt(page, 10),
+    limit: parseInt(limit, 10),
+    sortBy,
+    sortOrder,
+  };
+
+  ctx.body = await productService.getAll(filters);
 };
 const getProductById = async (ctx) => {
-  ctx.body = await productService.getById(Number(ctx.params.id));
+  ctx.body = await productService.getById(ctx.params.id);
 };
 
 // UPDATE /products/:id
@@ -16,7 +45,7 @@ const updateProductById = async (ctx) => {
 
 // DELETE /products/:id
 const deleteProductById = async (ctx) => {
-  ctx.body = await productService.deleteById(Number(ctx.params.id));
+  ctx.body = await productService.deleteById(ctx.params.id);
 };
 
 // CREATE /products

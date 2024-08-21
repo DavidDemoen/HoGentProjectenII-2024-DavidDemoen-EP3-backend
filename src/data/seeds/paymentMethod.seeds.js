@@ -36,6 +36,11 @@ const paymentMethods = [
     name: "SAMSUNG_PAY",
     description: "Pay using Samsung Pay.",
   },
+  {
+    referenceId: "B2B-PM-0008",
+    name: "QR_CODE",
+    description: "Pay using QR-bank transfer.",
+  },
 ];
 
 const seedPaymentMethods = () => PaymentMethod.bulkCreate(paymentMethods);
