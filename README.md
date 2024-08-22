@@ -9,6 +9,7 @@ yarn install
 ```
 yarn start
 ```
+The server is listening to calls on localhost:9000. A comprehensive list of all REST endpoints will be available soon!
 ## .env
 Create a .env file with the following content:
 ```
